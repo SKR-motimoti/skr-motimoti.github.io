@@ -1,24 +1,7 @@
 @charset "utf-8";
 
-body {
-    background: red;
-  }
-/*
-body {
-    background: #3bb7f9;
-    animation: bgColor 10s infinite;
-  }
-  @keyframes bgColor {
-    0% {
-      background: #3bb7f9;
-    }
-    50% {
-      background: #0774af;
-    }
-    100% {
-      background: #3bb7f9;
-    }
-  }
+
+
 .grad1,.grad2,.grad3 {
     position: absolute;
   }
@@ -132,4 +115,4 @@ body {
   a.btn--radius {
     border-radius: 100vh;
   }
-  */
+ 
