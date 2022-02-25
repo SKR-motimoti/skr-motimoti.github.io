@@ -1,4 +1,7 @@
-/*bg*/
+body {
+    background-color: rgb(243, 255, 214)
+  }
+/*
 body {
     background: #3bb7f9;
     animation: bgColor 10s infinite;
@@ -74,7 +77,7 @@ body {
     100% {opacity: 0;}
   }
 
-  /*ボタン*/
+
   *,
   *:before,
   *:after {
@@ -127,4 +130,4 @@ body {
   a.btn--radius {
     border-radius: 100vh;
   }
-  
+  */
