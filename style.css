@@ -62,13 +62,13 @@ body {
   .btn--orange,
   a.btn--orange {
     color: #fff;
-    background-color: #eb6100;
+    background-color: #00a8eb;
   }
   
   .btn--orange:hover,
   a.btn--orange:hover {
     color: #fff;
-    background: #f56500;
+    background: #0084b8;
   }
   
   a.btn--radius {
