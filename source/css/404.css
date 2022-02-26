@@ -82,6 +82,10 @@
     border-radius: 100vh;
   }
  
+  a.kakushi{
+    color: transparent;
+    font-size: 2px;
+   }
 
   .box {
     text-align: center;
