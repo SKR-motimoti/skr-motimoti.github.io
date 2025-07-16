@@ -1,0 +1,47 @@
+<input type="file" id="midiFile" accept=".mid" />
+<button id="downloadBtn" disabled>変換結果をダウンロード</button>
+<pre id="output"></pre>
+
+<script src="https://cdn.jsdelivr.net/npm/@tonejs/midi"></script>
+<script>
+let resultText = '';
+
+document.getElementById('midiFile').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const arrayBuffer = await file.arrayBuffer();
+  const midi = new Midi(arrayBuffer);
+
+  const grouped = {};
+
+  midi.tracks.forEach((track) => {
+    track.notes.forEach((note) => {
+      const key = `${note.ticks}_${track.name || "Unnamed"}`;
+      if (!grouped[key]) grouped[key] = [];
+      grouped[key].push(note.name);
+    });
+  });
+
+  resultText = Object.entries(grouped).sort((a, b) => {
+    const [timeA] = a[0].split('_');
+    const [timeB] = b[0].split('_');
+    return parseInt(timeA) - parseInt(timeB);
+  }).map(([key, notes]) => {
+    const [time, part] = key.split('_');
+    return `[${time}] ${part}: ${notes.join(' | ')}`;
+  }).join('\n');
+
+  document.getElementById('output').textContent = resultText;
+  document.getElementById('downloadBtn').disabled = false;
+});
+
+document.getElementById('downloadBtn').addEventListener('click', () => {
+  const blob = new Blob([resultText], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'midi_notes.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+});
+</script>
